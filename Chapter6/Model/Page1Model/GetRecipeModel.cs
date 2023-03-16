@@ -1,53 +1,54 @@
 ﻿using Chapter6.EndPoint;
-using Chapter6.Model.HttpModel;
+using Chapter6.HttpModel;
 using Newtonsoft.Json;
 using Plugin.Connectivity;
+using System.Collections.ObjectModel;
 
-namespace Chapter6.Model.Page1Model
+namespace Chapter6.Model.Page1Model.RecipeModel
 {
     public class GetRecipeModel
     {
         private GetRecipeEndPoint _getRecipeEndPoint;
-        public List<RecipeDetails> RecipeDetails { get; set; }
+        public ObservableCollection<RecipeDetail> RecipeDetails { get; set; }
         public GetRecipeModel()
         {
             _getRecipeEndPoint = new GetRecipeEndPoint();
         }
 
-        public async Task<Result> GetRecipeDetailsAsync()
+        public async Task<PageResult> GetRecipeDetailsAsync()
         {
-            if(CrossConnectivity.Current.IsConnected)
+            if (CrossConnectivity.Current.IsConnected)
             {
-                var response=await _getRecipeEndPoint.ExecuteAsync();
-                if(response.IsSuccessStatusCode)
+                var response = await _getRecipeEndPoint.ExecuteAsync();
+                if (response.IsSuccessStatusCode)
                 {
-                    var data=await response.Content.ReadAsStringAsync();
-                    var recipe= JsonConvert.DeserializeObject<RecipeResponseModel>(data);
-                    RecipeDetails = recipe.RecipeDetails;
-                    return new Result()
+                    var data = await response.Content.ReadAsStringAsync();
+                    var recipes = JsonConvert.DeserializeObject<RecipeResponseModel>(data);
+                    RecipeDetails = recipes.RecipeDetails;
+                    return new PageResult()
                     {
                         IsSuccess = true,
-                    };
+                    };                 
                 }
                 else
                 {
-                    return new Result()
+                    return new PageResult()
                     {
-                        IsSuccess = false,
+                        IsSuccess = false,                      
                         Message = "Somthing went wrong"
                     };
+                   
                 }
             }
             else
             {
-                return new Result()
+                return new PageResult()
                 {
                     IsSuccess = false,
                     IsInternetError = true,
-                    Message="No Internet Connection"
+                    Message = "No Internet Connection"
                 };
             }
         }
-
     }
 }

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Chapter6.View.Page2View.ActivityScreen"
+             xmlns:ViewModel="clr-namespace:Chapter6.ViewModel.Page2ViewModel.ViewModelActivity"
+             xmlns:Template="clr-namespace:Chapter6.Template.ActivityTemp"
+             Title="ActivityScreen">
+
+
+    <NavigationPage.TitleView>
+        <Label
+            Margin="0,15,10,0"
+            FontSize="20"
+            FontAttributes="Bold"
+            Text="Your Activites"/>
+    </NavigationPage.TitleView>
+
+    <ContentPage.BindingContext>
+        <ViewModel:ActivityViewModel></ViewModel:ActivityViewModel>
+    </ContentPage.BindingContext>
+
+
+    <ContentPage.Resources>
+        <DataTemplate
+            x:Key="Complate">
+            <SwipeView>
+                <SwipeView.RightItems>
+                    <SwipeItem  
+                        CommandParameter="{Binding}"
+                        Command="{Binding Source={x:Reference CollectionView} ,Path=BindingContext.DeleteCommand}"
+                        IconImageSource="deletebutton"
+                        Text="Delete"
+                        BackgroundColor="Red">
+                    </SwipeItem>
+                    <SwipeItem  
+                        CommandParameter="{Binding}"
+                        Command="{Binding Source={x:Reference CollectionView} ,Path=BindingContext.DeleteCommand}"
+                        IconImageSource="editbutton"
+                        Text="Edit"
+                        BackgroundColor="Green">
+                    </SwipeItem>
+                    
+                </SwipeView.RightItems>
+                <Border
+                StrokeShape="RoundRectangle 10">
+                    <StackLayout>
+                        <Grid
+                        ColumnDefinitions="Auto,*">
+                            <BoxView
+                            Color="Green"
+                            Grid.Column="0"
+                            WidthRequest="10"></BoxView>
+                            <VerticalStackLayout
+                            Margin="10,15"
+                            Spacing="5"
+                            Grid.Column="1">
+                                <Label
+                                    FontSize="16"
+                                    FontAttributes="Bold"
+                                    Text="{Binding Title}"/>
+                                <Label
+                                    Text="{Binding DueDate,StringFormat='⌚{0: dd/MM/yyyy}'}"/>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </StackLayout>
+                </Border>
+            </SwipeView>
+        </DataTemplate>
+        <DataTemplate
+            x:Key="Incomplate">
+            <SwipeView>
+                <SwipeView.RightItems>
+                    <SwipeItem  
+                        CommandParameter="{Binding}"
+                        Command="{Binding Source={x:Reference CollectionView} ,Path=BindingContext.DeleteCommand}"
+                        IconImageSource="deletebutton"
+                        Text="Delete"
+                        BackgroundColor="Red">
+                    </SwipeItem>
+                    <SwipeItem  
+                        CommandParameter="{Binding}"
+                        Command="{Binding Source={x:Reference CollectionView} ,Path=BindingContext.DeleteCommand}"
+                        IconImageSource="editbutton"
+                        Text="Edit"
+                        BackgroundColor="Green">
+                    </SwipeItem>
+
+                </SwipeView.RightItems>
+                <Border
+                StrokeShape="RoundRectangle 10">
+                    <StackLayout>
+                        <Grid
+                        ColumnDefinitions="Auto,*">
+                            <BoxView
+                            Color="Red"
+                            Grid.Column="0"
+                            WidthRequest="10"></BoxView>
+                            <VerticalStackLayout
+                            Margin="10,15"
+                            Spacing="5"
+                            Grid.Column="1">
+                                <Label
+                                    FontSize="16"
+                                    FontAttributes="Bold"
+                                    Text="{Binding Title}"/>
+                                <Label
+                                    Text="{Binding DueDate,StringFormat='⌚{0: dd/MM/yyyy}'}"/>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </StackLayout>
+                </Border>
+            </SwipeView>
+        </DataTemplate>
+        <Template:ActivityTemplate
+            x:Key="Selector"
+            ComplateTemplate="{StaticResource Complate}"
+            InComplateTemplate="{StaticResource Incomplate}">   
+        </Template:ActivityTemplate>
+    </ContentPage.Resources>
+   
+        <Grid
+            BackgroundColor="LightGray">
+            <CollectionView
+                Margin="10"
+                ItemsSource="{Binding ActivityDetails}"
+                ItemTemplate="{StaticResource Selector}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout
+                        Orientation="Vertical"
+                        ItemSpacing="10"></LinearItemsLayout>
+                </CollectionView.ItemsLayout>
+             </CollectionView>
+            <ImageButton
+                x:Name="AddButton"
+                Clicked="AddButtonClicked"
+                Margin="0,0,20,20"
+                HeightRequest="50"
+                WidthRequest="50"
+                Source="addbutton"
+                HorizontalOptions="End"
+                VerticalOptions="End"></ImageButton>
+        </Grid>   
+</ContentPage>

@@ -1,4 +1,5 @@
 ﻿using Chapter6.View.Page1View;
+using Chapter6.View.Page2View;
 
 namespace Chapter6;
 
@@ -8,6 +9,8 @@ public partial class App : Application
 	{
 		InitializeComponent();
 
-		MainPage = new NavigationPage(new RecipeScreen()); ;
+
+		MainPage = new NavigationPage(new AddActivityScreen())
+		{ BarBackgroundColor = Colors.White }; 
 	}
 }

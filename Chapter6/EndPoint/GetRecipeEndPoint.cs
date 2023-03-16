@@ -1,5 +1,4 @@
-﻿
-using Chapter6.Interface;
+﻿using Chapter6.Interface.ReceipeInterface;
 using Refit;
 
 namespace Chapter6.EndPoint
@@ -8,8 +7,9 @@ namespace Chapter6.EndPoint
     {
         public async Task<HttpResponseMessage> ExecuteAsync()
         {
-            return await RestService.For<IRecipeApi>("https://run.mocky.io/v3/").GetRecipeList();
+            return await RestService.
+                For<IRecipeApi>("https://run.mocky.io/v3").
+                GetRecipeList();
         }
-
     }
 }
