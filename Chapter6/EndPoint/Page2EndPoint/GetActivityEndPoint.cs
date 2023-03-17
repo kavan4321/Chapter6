@@ -1,7 +1,7 @@
 ﻿using Chapter6.Interface.ActivityInterface;
 using Refit;
 
-namespace Chapter6.EndPoint
+namespace Chapter6.EndPoint.Page2EndPoint
 {
     public class GetActivityEndPoint
     {

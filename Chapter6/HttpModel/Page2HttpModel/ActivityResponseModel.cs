@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace Chapter6.HttpModel
+namespace Chapter6.HttpModel.Page2HttpModel
 {
-    
+
     public class ActivityDetail
     {
         [JsonProperty("id")]

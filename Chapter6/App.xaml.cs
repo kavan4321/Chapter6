@@ -9,8 +9,7 @@ public partial class App : Application
 	{
 		InitializeComponent();
 
-
-		MainPage = new NavigationPage(new AddActivityScreen())
+		MainPage = new NavigationPage(new ActivityScreen())
 		{ BarBackgroundColor = Colors.White }; 
 	}
 }

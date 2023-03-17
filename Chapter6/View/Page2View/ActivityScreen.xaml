@@ -21,20 +21,21 @@
 
 
     <ContentPage.Resources>
+      
         <DataTemplate
             x:Key="Complate">
             <SwipeView>
                 <SwipeView.RightItems>
                     <SwipeItem  
                         CommandParameter="{Binding}"
-                        Command="{Binding Source={x:Reference CollectionView} ,Path=BindingContext.DeleteCommand}"
+                        Command="{Binding Source={x:Reference ActivityCollection} ,Path=BindingContext.DeleteCommand}"
                         IconImageSource="deletebutton"
                         Text="Delete"
                         BackgroundColor="Red">
                     </SwipeItem>
                     <SwipeItem  
                         CommandParameter="{Binding}"
-                        Command="{Binding Source={x:Reference CollectionView} ,Path=BindingContext.DeleteCommand}"
+                        Command="{Binding Source={x:Reference ActivityCollection} ,Path=BindingContext.EditCommand}"
                         IconImageSource="editbutton"
                         Text="Edit"
                         BackgroundColor="Green">
@@ -66,20 +67,21 @@
                 </Border>
             </SwipeView>
         </DataTemplate>
+      
         <DataTemplate
             x:Key="Incomplate">
             <SwipeView>
                 <SwipeView.RightItems>
                     <SwipeItem  
                         CommandParameter="{Binding}"
-                        Command="{Binding Source={x:Reference CollectionView} ,Path=BindingContext.DeleteCommand}"
+                        Command="{Binding Source={x:Reference ActivityCollection} ,Path=BindingContext.DeleteCommand}"
                         IconImageSource="deletebutton"
                         Text="Delete"
                         BackgroundColor="Red">
                     </SwipeItem>
                     <SwipeItem  
                         CommandParameter="{Binding}"
-                        Command="{Binding Source={x:Reference CollectionView} ,Path=BindingContext.DeleteCommand}"
+                        Command="{Binding Source={x:Reference ActivityCollection} ,Path=BindingContext.EditCommand}"
                         IconImageSource="editbutton"
                         Text="Edit"
                         BackgroundColor="Green">
@@ -111,6 +113,7 @@
                 </Border>
             </SwipeView>
         </DataTemplate>
+       
         <Template:ActivityTemplate
             x:Key="Selector"
             ComplateTemplate="{StaticResource Complate}"
@@ -121,6 +124,7 @@
         <Grid
             BackgroundColor="LightGray">
             <CollectionView
+                x:Name="ActivityCollection"
                 Margin="10"
                 ItemsSource="{Binding ActivityDetails}"
                 ItemTemplate="{StaticResource Selector}">

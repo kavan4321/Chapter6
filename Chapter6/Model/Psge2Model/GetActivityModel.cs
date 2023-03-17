@@ -1,5 +1,5 @@
-﻿    using Chapter6.EndPoint;
-using Chapter6.HttpModel;
+﻿using Chapter6.EndPoint.Page2EndPoint;
+using Chapter6.HttpModel.Page2HttpModel;
 using Newtonsoft.Json;
 using Plugin.Connectivity;
 using System.Collections.ObjectModel;

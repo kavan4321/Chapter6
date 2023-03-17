@@ -1,3 +1,4 @@
+using Chapter6.HttpModel.Page2HttpModel;
 using Chapter6.ViewModel.Page2ViewModel.ViewModelActivity;
 
 namespace Chapter6.View.Page2View;
@@ -10,9 +11,22 @@ public partial class ActivityScreen : ContentPage
 		InitializeComponent();
 		_activityViewModel=(ActivityViewModel)BindingContext;
 		_=GetActivityList();
+        _activityViewModel.EditEvent += ActivityViewModelEditEvent;
 	}
 
-	private async Task GetActivityList()
+    private async void ActivityViewModelEditEvent(object sender, EventArgs e)
+    {
+		ActivityDetail activityDetail = new()
+		{
+			Id = _activityViewModel.Id,
+			Title = _activityViewModel.Name,
+			DueDate= _activityViewModel.DueDate,
+			Completed=_activityViewModel.Complete
+		};
+        await Navigation.PushAsync(new EditActivityScreen(activityDetail));
+    }
+
+    private async Task GetActivityList() 
 	{
 	  await	_activityViewModel.GetActivityListAsync();
 	}
@@ -21,4 +35,6 @@ public partial class ActivityScreen : ContentPage
     {
 	  await	Navigation.PushAsync(new AddActivityScreen());
     }
+
+
 }

@@ -1,5 +1,4 @@
-﻿
-using Chapter6.HttpModel;
+﻿using Chapter6.HttpModel.Page2HttpModel;
 
 namespace Chapter6.Template.ActivityTemp;
 
