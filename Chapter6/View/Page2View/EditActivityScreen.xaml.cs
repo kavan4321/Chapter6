@@ -7,8 +7,7 @@ namespace Chapter6.View.Page2View;
 
 public partial class EditActivityScreen : ContentPage
 {
-	private UpdateActivityViewModel _updateActivityViewModel;
-	
+	private UpdateActivityViewModel _updateActivityViewModel;	
 	private EditActivityViewModel _viewModel;
 	public EditActivityScreen(ActivityDetail activityDetail)
 	{
