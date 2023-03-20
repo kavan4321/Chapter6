@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Chapter6.View.Page3View.WhatsAppScreen"
+             xmlns:pages="clr-namespace:Chapter6.View.Page3View"            
+             BarBackgroundColor="#075E30"
+             BarTextColor="White"
+             SelectedTabColor="White"
+             NavigationPage.HasNavigationBar="True">
+    <NavigationPage.TitleView>
+        <Label
+            Margin="10,15"
+            TextColor="White"
+            FontSize="20"
+            FontAttributes="Bold"
+            Text="WhatsApp"/>
+    </NavigationPage.TitleView>
+    <pages:CallScreen
+        Title="CALL"/>
+    <pages:ChatScreen
+        Title="CHAT"/>
+    <pages:ContactScreen
+        Title="CONTACT"/>
+</TabbedPage>

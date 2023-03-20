@@ -13,4 +13,7 @@ public interface IActivityApi
 
     [Put("/Activities/{id}")]
     Task<HttpResponseMessage> UpdateActivity([Body] ActivityRequestModel model, int id);
+
+    [Delete("/Activities/{id}")]
+    Task<HttpResponseMessage> DeleteActivity(int id);
 }

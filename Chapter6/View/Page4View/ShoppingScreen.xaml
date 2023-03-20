@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Chapter6.View.Page4View.ShoppingScreen"
+             xmlns:ViewModel="clr-namespace:Chapter6.ViewModel.Page4ViewModel.ViewModelShopping"
+             NavigationPage.HasNavigationBar="False"
+             Title="ShoppingScreen">
+
+    <ContentPage.BindingContext>
+        <ViewModel:ShoppingViewModel></ViewModel:ShoppingViewModel>
+    </ContentPage.BindingContext>
+    <StackLayout>
+       
+        <Grid
+            Margin="10"
+            ColumnDefinitions="*,*,*">
+            <ImageButton
+                HorizontalOptions="Start"
+                Grid.Column="0"
+                Source="search"
+                HeightRequest="25"
+                WidthRequest="25"></ImageButton>
+            <Label
+                HorizontalOptions="Center"
+                Grid.Column="1"
+                FontAttributes="Bold"
+                FontSize="20"
+                Text="SHOP"/>
+            <ImageButton
+                HorizontalOptions="End"
+                Grid.Column="2"
+                Source="shopping"
+                HeightRequest="25"
+                WidthRequest="25"></ImageButton>
+        </Grid>
+        <CollectionView
+            ItemsSource="{Binding CatagoryDetails}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border>
+                        <Label
+                            Text="{Binding Catagory}"/>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>

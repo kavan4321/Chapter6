@@ -52,6 +52,13 @@
 	  <None Remove="Resources\Images\addbutton.png" />
 	  <None Remove="Resources\Images\deletebutton.png" />
 	  <None Remove="Resources\Images\editbutton.png" />
+	  <None Remove="Resources\Images\search.png" />
+	  <None Remove="Resources\Images\shopping.png" />
+	  <None Remove="Resources\Images\user1.jpg" />
+	  <None Remove="Resources\Images\user2.jpg" />
+	  <None Remove="Resources\Images\user3.jpg" />
+	  <None Remove="Resources\Images\user4.jpg" />
+	  <None Remove="Resources\Images\user5.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -73,6 +80,21 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\Page2View\EditActivityScreen.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\Page3View\CallScreen.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\Page3View\ChatScreen.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\Page3View\ContactScreen.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\Page3View\WhatsAppScreen.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\Page4View\ShoppingScreen.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

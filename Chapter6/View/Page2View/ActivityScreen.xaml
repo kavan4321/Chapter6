@@ -21,7 +21,8 @@
 
 
     <ContentPage.Resources>
-      
+
+        <!--Complate-->
         <DataTemplate
             x:Key="Complate">
             <SwipeView>
@@ -40,7 +41,7 @@
                         Text="Edit"
                         BackgroundColor="Green">
                     </SwipeItem>
-                    
+
                 </SwipeView.RightItems>
                 <Border
                 StrokeShape="RoundRectangle 10">
@@ -67,7 +68,9 @@
                 </Border>
             </SwipeView>
         </DataTemplate>
-      
+
+
+        <!--InComplate-->
         <DataTemplate
             x:Key="Incomplate">
             <SwipeView>
@@ -113,28 +116,39 @@
                 </Border>
             </SwipeView>
         </DataTemplate>
-       
+
         <Template:ActivityTemplate
             x:Key="Selector"
             ComplateTemplate="{StaticResource Complate}"
-            InComplateTemplate="{StaticResource Incomplate}">   
+            InComplateTemplate="{StaticResource Incomplate}">
         </Template:ActivityTemplate>
     </ContentPage.Resources>
-   
-        <Grid
+
+
+    <Grid              
             BackgroundColor="LightGray">
-            <CollectionView
+        <CollectionView
+                IsVisible="{Binding CollectionShow}"
                 x:Name="ActivityCollection"
                 Margin="10"
                 ItemsSource="{Binding ActivityDetails}"
                 ItemTemplate="{StaticResource Selector}">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout
                         Orientation="Vertical"
                         ItemSpacing="10"></LinearItemsLayout>
-                </CollectionView.ItemsLayout>
-             </CollectionView>
-            <ImageButton
+            </CollectionView.ItemsLayout>
+        </CollectionView>
+       
+        <ActivityIndicator
+            HeightRequest="50"
+            WidthRequest="50"
+            IsVisible="{Binding ActivityShow}"
+            IsRunning="{Binding ActivityShow}">
+        </ActivityIndicator>
+        
+        <ImageButton
+                IsVisible="{Binding CollectionShow}"
                 x:Name="AddButton"
                 Clicked="AddButtonClicked"
                 Margin="0,0,20,20"
@@ -143,5 +157,5 @@
                 Source="addbutton"
                 HorizontalOptions="End"
                 VerticalOptions="End"></ImageButton>
-        </Grid>   
+    </Grid>
 </ContentPage>
