@@ -2,11 +2,64 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Chapter6.View.Page3View.ContactScreen"
+             xmlns:viewmodel="clr-namespace:Chapter6.ViewModel.Page3ViewModel.ViewModelContact"
              Title="ContactScreen">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <ContentPage.BindingContext>
+        <viewmodel:ContactViewModel></viewmodel:ContactViewModel>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <DataTemplate
+            x:Key="ContactDetail">
+            <Border
+                StrokeThickness="0">
+                <Grid
+                    
+                     ColumnSpacing="10"
+                     RowDefinitions="*,*"
+                     ColumnDefinitions="Auto,*">
+                    <Border                             
+                       Grid.Row="0"
+                       Grid.Column="0"
+                       Grid.RowSpan="2"                              
+                       HeightRequest="50"
+                       WidthRequest="50"     
+                       HorizontalOptions="Start"
+                       StrokeThickness="0"
+                       StrokeShape="RoundRectangle 50">
+                        <ImageButton
+                            Aspect="AspectFill"
+                            Source="{Binding UserImage}"></ImageButton>
+                    </Border>
+                    <Label
+                         Grid.Row="0"
+                         Grid.Column="1"
+                         FontAttributes="Bold"
+                         FontSize="15"
+                         VerticalOptions="End"
+                         Text="{Binding Name}"/>
+
+                    <Label                           
+                         Grid.Row="1"
+                         Grid.Column="1"
+                         TextColor="Gray"
+                         LineBreakMode="TailTruncation"
+                         VerticalOptions="Center"
+                         Text="{Binding Stutus}"/>
+                </Grid>
+            </Border>
+        </DataTemplate>
+    </ContentPage.Resources>
+    <StackLayout>
+        <CollectionView
+            Margin="10,20"
+            ItemsSource="{Binding ContactDetails}"
+            ItemTemplate="{StaticResource ContactDetail}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout
+                    Orientation="Vertical"
+                    ItemSpacing="15"/>
+            </CollectionView.ItemsLayout>
+        </CollectionView>
+    </StackLayout>
 </ContentPage>
