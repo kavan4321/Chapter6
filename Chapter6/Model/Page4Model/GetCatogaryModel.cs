@@ -1,5 +1,4 @@
-﻿
-using Chapter6.EndPoint.Page4EndPoint;
+﻿using Chapter6.EndPoint.Page4EndPoint;
 using Chapter6.HttpModel.Page4HttpModel;
 using CommunityToolkit.Maui.Core.Extensions;
 using Newtonsoft.Json;
@@ -11,7 +10,7 @@ namespace Chapter6.Model.Page4Model.Model.Catogary;
 public class GetCatogaryModel
 {
     private GetCategoryEndPoint _getCategoryEndPoint;
-    public List<ShoppingResponceModel> CatogaryDetails { get; set; }
+    public List<string> CatogaryDetails { get; set; }
 
     public GetCatogaryModel() 
     { 
@@ -25,7 +24,7 @@ public class GetCatogaryModel
             if (responce.IsSuccessStatusCode)
             {
                 var data= await responce.Content.ReadAsStringAsync();
-                var catogary = JsonConvert.DeserializeObject<List<ShoppingResponceModel>>(data);
+                var catogary = JsonConvert.DeserializeObject<List<string>>(data);
                 CatogaryDetails = catogary;
                 return new PageResult()
                 {

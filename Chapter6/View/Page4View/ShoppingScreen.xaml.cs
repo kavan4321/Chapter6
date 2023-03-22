@@ -10,9 +10,15 @@ public partial class ShoppingScreen : ContentPage
 		InitializeComponent();
 		_viewModel = (ShoppingViewModel)BindingContext;
 		_ = GetCatagoryList();
+		_ =GetProductList();
 	}
 	private async Task GetCatagoryList()
 	{
 		await _viewModel.GetCatagoryDetailAsync();
+	}
+
+	private async Task GetProductList()
+	{
+		await _viewModel.GetProductDetailAsync();
 	}
 }

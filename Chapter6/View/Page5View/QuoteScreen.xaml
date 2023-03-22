@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Chapter6.View.Page5View.QuoteScreen"
+             xmlns:viewmodel="clr-namespace:Chapter6.ViewModel.Page5ViewModel.ViewModelQuote"
+             Title="QuoteScreen">
+ 
+    <ContentPage.BindingContext>
+        <viewmodel:QuoteViewModel></viewmodel:QuoteViewModel>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Background>
+        <LinearGradientBrush EndPoint="0,1">
+            <GradientStop
+                Color="GhostWhite"
+                Offset="0.1"></GradientStop>
+            <GradientStop
+                Color="DarkViolet"
+                Offset="1.0"></GradientStop>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+ 
+    <Grid>
+        <CollectionView
+            Margin="10,20,10,10"
+            ItemsSource="{Binding QuoteDetails}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout
+                    Orientation="Vertical"
+                    ItemSpacing="10"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border
+                        StrokeShape="RoundRectangle 15">
+                        <Grid RowDefinitions="Auto,*"
+                              BackgroundColor="LightGray">
+                            <Label
+                                Grid.Row="0"
+                                Margin='10'
+                                TextColor="Purple"
+                                HorizontalOptions="Center"
+                                FontSize="18"
+                                Text="{Binding Author}"/>
+                            <Label
+                                Padding="15"
+                                FontSize="15"
+                                BackgroundColor="White"
+                                Grid.Row="1"
+                                Text="{Binding Quote}"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

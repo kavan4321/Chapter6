@@ -53,8 +53,7 @@
             IsRefreshing="{Binding IsRefresh}"
             Command="{Binding RefreshCommand}">
         <ScrollView>
-        
-        <StackLayout
+            <StackLayout
                 BackgroundColor="LightGray">
                 <ActivityIndicator
                 HorizontalOptions="Center"
@@ -77,8 +76,7 @@
                         HorizontalItemSpacing="10"></GridItemsLayout>
                     </CollectionView.ItemsLayout>
                 </CollectionView>
-        </StackLayout>
-        
-    </ScrollView>
+            </StackLayout>
+        </ScrollView>
     </RefreshView>
 </ContentPage>

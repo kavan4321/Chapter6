@@ -3,8 +3,9 @@ using Refit;
 
 namespace Chapter6.HttpModel.Page4HttpModel
 {
-    public class ShoppingResponceModel
-    {    
+    public class CategoryResponceModel
+    {
+        [JsonProperty("data")]
         public List<string> Catogory { get; set; }
     }
 }
