@@ -40,7 +40,7 @@ namespace Chapter6.Model.Page7Model
                     return new PageResult()
                     {
                         IsSuccess = true,
-                        Message = employee.UpdatedAt.ToString()
+                        Message = "Data Update successfully"
                     };
                 }
                 else
