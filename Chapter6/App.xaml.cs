@@ -4,6 +4,7 @@ using Chapter6.View.Page2View;
 using Chapter6.View.Page3View;
 using Chapter6.View.Page4View;
 using Chapter6.View.Page5View;
+using Chapter6.View.Page7View;
 
 namespace Chapter6;
 
@@ -13,8 +14,9 @@ public partial class App : Application
 	{
 		InitializeComponent();
 
-		MainPage = new NavigationPage(new QuotesDisplayScreen());
-		//{ BarBackgroundColor = Colors.White }; 
-		//{ BarBackgroundColor = Color.FromArgb("#075E30") };
+        MainPage = new NavigationPage(new EmployeeScreen());
+        //{ BarBackgroundColor = Colors.White }; 
+        //{ BarBackgroundColor = Color.FromArgb("#075E30") };
+        //{ BarBackgroundColor = Colors.Gray }; 
     }
 }

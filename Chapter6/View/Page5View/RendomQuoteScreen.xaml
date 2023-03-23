@@ -2,12 +2,41 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Chapter6.View.Page5View.RendomQuoteScreen"
+             xmlns:viewModel="clr-namespace:Chapter6.ViewModel.Page5ViewModel.ViewmodelRandom"
              Title="RendomQuoteScreen">
+
+    <ContentPage.BindingContext>
+        <viewModel:RandomQuoteViewModel></viewModel:RandomQuoteViewModel>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Background>
+        <LinearGradientBrush
+            EndPoint="0,1">
+            <GradientStop
+                Color="GhostWhite"
+                Offset="0.1"></GradientStop>
+            <GradientStop
+                Color="DarkViolet"
+                Offset="1.0"></GradientStop>
+        </LinearGradientBrush>
+    </ContentPage.Background>
    
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <StackLayout
+        Padding="20"
+        Spacing="15"
+        VerticalOptions="Center">
+        <Label
+            FontSize="17"           
+            Text="{Binding Quote}"/>
+        <Label
+            FontSize="15"
+            TextColor="White"
+            HorizontalOptions="End"
+            Text="{Binding Author}"/>
+        <Button
+            TextColor="Purple"
+            BackgroundColor="White"
+            Text="Tap for Random Quote"
+            Command="{Binding RandomCommand}"/>
+    </StackLayout>
 </ContentPage>

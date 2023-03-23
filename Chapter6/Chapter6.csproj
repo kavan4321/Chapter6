@@ -110,6 +110,29 @@
 	  <MauiXaml Update="View\Page5View\RendomQuoteScreen.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="View\Page6View\LoginScreen.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\Page6View\SignUpScreen.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\Page7View\AddEmployeeScreen.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\Page7View\EditEmployeeScreen.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\Page7View\EmployeeScreen.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="EndPoint\Page6EndPoint\" />
+	  <Folder Include="HttpModel\Page6HttpModel\" />
+	  <Folder Include="Interface\Page6Interface\" />
+	  <Folder Include="Model\Page6Model\" />
+	  <Folder Include="ViewModel\Page6ViewModel\" />
 	</ItemGroup>
 
 </Project>

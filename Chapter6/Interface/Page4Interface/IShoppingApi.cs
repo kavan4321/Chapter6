@@ -9,5 +9,5 @@ public interface IShoppingApi
     Task<HttpResponseMessage> GetCategoryList();
 
     [Get("/category/{category}")]
-    Task<HttpResponseMessage> GetCategoryList(string category);
+    Task<HttpResponseMessage> GetProductList(string category);
 }

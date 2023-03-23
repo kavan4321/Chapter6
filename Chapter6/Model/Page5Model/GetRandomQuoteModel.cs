@@ -9,7 +9,8 @@ namespace Chapter6.Model.Page5Model
     {
         private GetRandomQuoteEndPoint _getRandomQuoteEndPoint;
 
-        public List<RandomQuoteResponceModel> RandomQuote { get; set; }
+        public string Author { get; set; }
+        public string Quote { get; set; }
         public GetRandomQuoteModel()
         {
             _getRandomQuoteEndPoint=new GetRandomQuoteEndPoint();
@@ -22,8 +23,9 @@ namespace Chapter6.Model.Page5Model
                 if (responce.IsSuccessStatusCode)
                 {
                     var data = await responce.Content.ReadAsStringAsync();
-                    var quote=JsonConvert.DeserializeObject<List<RandomQuoteResponceModel>>(data);
-                    RandomQuote = quote;
+                    var quote=JsonConvert.DeserializeObject<RandomQuoteResponceModel>(data);
+                    Quote = quote.Quote;
+                    Author = quote.Author;
                     return new PageResult()
                     {
                         IsSuccess = true,

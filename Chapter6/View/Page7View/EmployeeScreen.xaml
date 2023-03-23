@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ViewModel="clr-namespace:Chapter6.ViewModel.Page7ViewModel.ViewModelEmployee"
+             x:Class="Chapter6.View.Page7View.EmployeeScreen"
+             BackgroundColor="LightGray"
+             Title="Employee">
+    <ContentPage.BindingContext>
+        <ViewModel:EmployeeViewModel></ViewModel:EmployeeViewModel>
+    </ContentPage.BindingContext>
+
+    <Grid
+        Margin="10,5,10,10">
+        <CollectionView  
+            x:Name="EmployeeCollection"
+            ItemsSource="{Binding EmployeeDetails}">
+            
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout
+                    Orientation="Vertical"
+                    ItemSpacing="15"/>
+            </CollectionView.ItemsLayout>
+            
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems >
+                            <SwipeItems>
+                                <SwipeItem
+                                     CommandParameter="{Binding}"
+                                     Command="{Binding Source={x:Reference EmployeeCollection} ,Path=BindingContext.DeleteCommand}"                                                         
+                                    IconImageSource="deletebutton"/>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <SwipeView.LeftItems>
+                            <SwipeItems>
+                                <SwipeItem 
+                                    CommandParameter="{Binding}"
+                                    Command="{Binding Source={x:Reference EmployeeCollection} ,Path=BindingContext.EditCommand}"                      
+                                    IconImageSource="editbutton"/>
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+                        <Border
+                        BackgroundColor="White"
+                        StrokeShape="RoundRectangle 20">
+                        <Grid
+                            Margin="10,15"
+                            RowDefinitions="*,*"
+                            ColumnDefinitions="Auto,*"
+                            ColumnSpacing="10">
+                            <Border                                
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Grid.RowSpan="2"
+                                HeightRequest="50"
+                                WidthRequest="50"
+                                VerticalOptions="Center"
+                                StrokeShape="RoundRectangle 50">
+                                <Image
+                                    Source="{Binding Avatar}"></Image>
+                            </Border>
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                VerticalTextAlignment="End">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span    
+                                            FontAttributes="Bold"
+                                            Text="{Binding FirstName, StringFormat='{0 } '}"></Span>
+                                        <Span
+                                            FontAttributes="Bold"
+                                            Text="{Binding LastName}"></Span>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Text="{Binding Email}"/>
+                        </Grid>
+                    </Border>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <ImageButton
+            x:Name="AddButton"
+            Clicked="AddButtonClicked"
+            Source="addbutton"
+            HeightRequest="50"
+            WidthRequest="50"
+            VerticalOptions="End"
+            HorizontalOptions="End"/>
+    </Grid>
+</ContentPage>

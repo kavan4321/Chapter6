@@ -48,7 +48,6 @@ public class EditActivityViewModel : INotifyPropertyChanged
             var result = await _updateActivityModel.UpdateActivityDetailAsnyc();
             UpdateEvent?.Invoke(this, result);
         }
-
     }
     public event PropertyChangedEventHandler PropertyChanged;
     public void OnPropertyChanged([CallerMemberName] string propertyName = null)

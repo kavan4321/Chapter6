@@ -12,7 +12,7 @@ namespace Chapter6.EndPoint.Page4EndPoint
         {
             return await RestService.
                 For<IShoppingApi>("https://dummyjson.com/products").
-                GetCategoryList(Category);
+                GetProductList(Category);
         }
     }
 }

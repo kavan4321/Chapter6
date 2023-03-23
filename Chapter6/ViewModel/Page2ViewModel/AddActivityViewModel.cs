@@ -67,6 +67,7 @@ public class AddActivityViewModel:INotifyPropertyChanged
             _addActivityModel.Complete = Complete;
             var result = await _addActivityModel.AddActivityDetailsAsync();
             AddEvent?.Invoke(this, result);
+
         }
         
     }
