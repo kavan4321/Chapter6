@@ -23,7 +23,6 @@ public partial class EditActivityScreen : ContentPage
     {
         if (e.IsSuccess)
         {
-
             _ = Toast.Make(e.Message, CommunityToolkit.Maui.Core.ToastDuration.Short).Show();
             await Navigation.PopAsync();
         }
