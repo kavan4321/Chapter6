@@ -50,6 +50,7 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\addbutton.png" />
+	  <None Remove="Resources\Images\back.png" />
 	  <None Remove="Resources\Images\call.png" />
 	  <None Remove="Resources\Images\callimage.png" />
 	  <None Remove="Resources\Images\callimage1.png" />
@@ -125,14 +126,6 @@
 	  <MauiXaml Update="View\Page7View\EmployeeScreen.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="EndPoint\Page6EndPoint\" />
-	  <Folder Include="HttpModel\Page6HttpModel\" />
-	  <Folder Include="Interface\Page6Interface\" />
-	  <Folder Include="Model\Page6Model\" />
-	  <Folder Include="ViewModel\Page6ViewModel\" />
 	</ItemGroup>
 
 </Project>

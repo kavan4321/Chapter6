@@ -14,9 +14,24 @@ public partial class EmployeeScreen : ContentPage
 		_viewModel = (EmployeeViewModel)BindingContext;
         _viewModel.GetEmployeeEvent += ViewModelGetEmployeeEvent;
         _viewModel.EditEvent += ViewModelEditEvent;
+        _viewModel.DeleteEmployeeEvent += ViewModelDeleteEmployeeEvent;
 		_ = GetEmployeeList();
 
 	}
+
+
+
+    private void ViewModelDeleteEmployeeEvent(object sender, Model.PageResult e)
+    {
+		if (e.IsSuccess)
+		{
+			Toast.Make(e.Message,CommunityToolkit.Maui.Core.ToastDuration.Short).Show();
+		}
+		else
+		{
+			Toast.Make(e.Message, CommunityToolkit.Maui.Core.ToastDuration.Short).Show();
+		}
+    }
 
     private async void ViewModelEditEvent(object sender, EventArgs e)
     {

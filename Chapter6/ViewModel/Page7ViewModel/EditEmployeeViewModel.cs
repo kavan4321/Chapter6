@@ -12,6 +12,7 @@ public class EditEmployeeViewModel:INotifyPropertyChanged
 {
     public event EventHandler<PageResult> EditEmployeeEvent;
     private UpdateEmployeeModel _updateEmployeeModel;
+  
     private EmployeeDetail _employeeDetail;
     public EmployeeDetail EmployeeDetail
     {

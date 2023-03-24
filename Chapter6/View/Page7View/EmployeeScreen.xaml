@@ -12,6 +12,7 @@
     <Grid
         Margin="10,5,10,10">
         <CollectionView  
+            IsVisible="{Binding IsShow}"
             x:Name="EmployeeCollection"
             ItemsSource="{Binding EmployeeDetails}">
             
@@ -65,9 +66,12 @@
                                 VerticalTextAlignment="End">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span    
+                                        <Span                                             
                                             FontAttributes="Bold"
-                                            Text="{Binding FirstName, StringFormat='{0 } '}"></Span>
+                                            Text="{Binding FirstName}"></Span>
+                                        <Span                                             
+                                            FontAttributes="Bold"
+                                            Text=" "></Span>
                                         <Span
                                             FontAttributes="Bold"
                                             Text="{Binding LastName}"></Span>
@@ -84,6 +88,11 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+        <ActivityIndicator
+            HeightRequest="50"
+            WidthRequest="50"
+            IsVisible="{Binding IsLoading}"
+            IsRunning="{Binding IsLoading}"></ActivityIndicator>
         <ImageButton
             x:Name="AddButton"
             Clicked="AddButtonClicked"

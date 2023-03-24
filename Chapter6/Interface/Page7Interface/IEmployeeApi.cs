@@ -14,5 +14,8 @@ namespace Chapter6.Interface.Page7Interface
 
         [Put("/users/{id}")]
         Task<HttpResponseMessage> UpdadeEmployee([Body] EmployeeRequestModel model,int id);
+
+        [Delete("/users/{id}")]
+        Task<HttpResponseMessage> DeleteEmployee(int id);
     }
 }

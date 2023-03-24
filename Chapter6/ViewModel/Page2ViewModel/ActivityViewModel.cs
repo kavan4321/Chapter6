@@ -115,7 +115,7 @@ public class ActivityViewModel : INotifyPropertyChanged
         _getactivityModel = new GetActivityModel();
         _deleteActivityModel = new DeleteActivityModel();
         EditCommand = new Command<ActivityDetail>(EditDetails);
-        DeleteCommand = new Command(() => { _ = DeleteDetaliAsync(); }); 
+        DeleteCommand = new Command<ActivityDetail>((ActivityDetail) => { _ = DeleteDetaliAsync(ActivityDetail); }); 
     }
 
 
@@ -129,9 +129,9 @@ public class ActivityViewModel : INotifyPropertyChanged
         EditEvent?.Invoke(this, new EventArgs());
     }
 
-    public async Task DeleteDetaliAsync()
+    public async Task DeleteDetaliAsync(ActivityDetail activityDetail)
     {
-        _deleteActivityModel.Id = Id;
+        _deleteActivityModel.Id = activityDetail.Id;
         var result = await _deleteActivityModel.DeleteActivityAsync();
         DeleteEventHandler?.Invoke(this, result);
     }

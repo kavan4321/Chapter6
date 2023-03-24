@@ -2,14 +2,9 @@
 using Chapter6.Model;
 using Chapter6.Model.Page7Model;
 using CommunityToolkit.Maui.Core.Extensions;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Chapter6.ViewModel.Page7ViewModel.ViewModelEmployee;
@@ -17,8 +12,13 @@ namespace Chapter6.ViewModel.Page7ViewModel.ViewModelEmployee;
 public class EmployeeViewModel : INotifyPropertyChanged
 {
     private GetEmployeeModel _getEmployeeModel;
+    private DeleteEmployeeModel _deleteEmployeeModel;
+   
     public event EventHandler<PageResult> GetEmployeeEvent;
+    public event EventHandler<PageResult> DeleteEmployeeEvent;
     public event EventHandler EditEvent;
+   
+    
     private ObservableCollection<EmployeeDetail> _employeeDetails;
     public ObservableCollection<EmployeeDetail> EmployeeDetails
     {
@@ -30,12 +30,33 @@ public class EmployeeViewModel : INotifyPropertyChanged
         }
     }
 
+
+    private bool _isloading;
+    private bool _isShow;
     private int _id;
     private string _firstName;
     private string _lastName;
     private string _avatar;
     private string _email;
 
+    public bool IsLoading
+    {
+        get => _isloading;
+        set
+        {
+            _isloading = value;
+            OnPropertyChanged();
+        }
+    }
+    public bool IsShow
+    {
+        get => _isShow;
+        set
+        {
+            _isShow = value;
+            OnPropertyChanged();
+        }
+    }
     public int Id
     {
         get => _id;
@@ -87,7 +108,17 @@ public class EmployeeViewModel : INotifyPropertyChanged
     public EmployeeViewModel()
     {
         _getEmployeeModel=new GetEmployeeModel();
+        _deleteEmployeeModel = new DeleteEmployeeModel();    
         EditCommand = new Command<EmployeeDetail>(EditDetails);
+        DeleteCommand = new Command<EmployeeDetail>( (EmployeeDetail) => { _ = DeleteEmployeeDetailAsync(EmployeeDetail); });
+    }
+
+
+    public async Task DeleteEmployeeDetailAsync(EmployeeDetail employeeDetail)
+    {      
+        _deleteEmployeeModel.Id =employeeDetail.Id;
+        var result = await _deleteEmployeeModel.DeleteEmployeeAsync();
+        DeleteEmployeeEvent?.Invoke(this,result);
     }
 
 
@@ -100,11 +131,16 @@ public class EmployeeViewModel : INotifyPropertyChanged
         Email=employeeDetail.Email;
         EditEvent?.Invoke(this,new EventArgs());
     }
+
     public async Task GetEmployeeListAsync()
     {
+        IsLoading = true;
+        IsShow = false;
         var result =await  _getEmployeeModel.GetEmployeeDetailAsync();
         EmployeeDetails = _getEmployeeModel.EmployeeDetails.ToObservableCollection();
         GetEmployeeEvent?.Invoke(this, result);
+        IsLoading = false;
+        IsShow = true;
     }
 
     public event PropertyChangedEventHandler PropertyChanged;

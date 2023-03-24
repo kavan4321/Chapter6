@@ -1,42 +1,42 @@
-﻿using Chapter6.EndPoint.Page7EndPoint;
-using Chapter6.HttpModel.Page7HttpModel;
+﻿
+using Chapter6.EndPoint.Page6EndPoint;
+using Chapter6.HttpModel.Page6HttpModel;
 using Newtonsoft.Json;
 using Plugin.Connectivity;
-using System.Security.Cryptography;
 
-namespace Chapter6.Model.Page7Model
+namespace Chapter6.Model.Page6Model
 {
-    public class AddEmployeeModel
+    public class RegisterModel
     {
-        private AddEmployeeEndPoint _addEmployeeEndPoint;
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        private RegisterEndPoint _registerEndPoint;
+        public string Name { get; set; }
         public string Email { get; set; }
-        public string Image { get; set; }
-        public AddEmployeeModel()
+        public string Password { get; set; }
+
+        public RegisterModel()
         {
-            _addEmployeeEndPoint= new AddEmployeeEndPoint();
+            _registerEndPoint=new RegisterEndPoint();   
         }
-        public async Task<PageResult> AddEmployeeDetailsAsync()
+
+        public async Task<PageResult> RegisterDetailsAsync()
         {
             if (CrossConnectivity.Current.IsConnected)
             {
-                var requestModel = new EmployeeRequestModel()
-                {
+                var requestModel = new LoginRequestModel()
+                {                 
                     Email = Email,
-                    FirstName = FirstName,
-                    LastName = LastName,
+                    Password = Password
                 };
-                _addEmployeeEndPoint.EmployeeRequestModel= requestModel;
-                var response =await _addEmployeeEndPoint.ExecuteAsync();
+                _registerEndPoint.LoginRequestModel = requestModel;
+                var response = await _registerEndPoint.ExecuteAsync();
                 if (response.IsSuccessStatusCode)
                 {
                     var data = await response.Content.ReadAsStringAsync();
-                    var addemployee=JsonConvert.DeserializeObject<AddEmployeeResponceModel>(data);
+                    var addemployee = JsonConvert.DeserializeObject<LoginResponceModel>(data);
                     return new PageResult()
-                    {   
+                    {
                         IsSuccess = true,
-                        Message="Data Added Successfully"
+                        Message = "SignUp Successfully"
                     };
                 }
                 else

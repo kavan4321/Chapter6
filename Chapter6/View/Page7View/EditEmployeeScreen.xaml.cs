@@ -12,13 +12,14 @@ public partial class EditEmployeeScreen : ContentPage
 		InitializeComponent();
 		_viewModel = (EditEmployeeViewModel)BindingContext;
 		_viewModel.EmployeeDetail=employeeDetail;
-        _viewModel.EditEmployeeEvent += _viewModel_EditEmployeeEvent;
+        _viewModel.EditEmployeeEvent += ViewModelEditEmployeeEvent;
 	}
 
-    private void _viewModel_EditEmployeeEvent(object sender, Model.PageResult e)
+    private void ViewModelEditEmployeeEvent(object sender, Model.PageResult e)
     {
         if(e.IsSuccess)
 		{
+			Navigation.PopAsync();
 			Toast.Make(e.Message, CommunityToolkit.Maui.Core.ToastDuration.Short).Show();
 		}
 		else
